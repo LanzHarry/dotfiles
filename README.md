@@ -4,7 +4,7 @@ Managed with stow (e.g. install with `sudo apt install stow`)
 ## Install
 - `clone` this repo into a local repo e.g. `git clone https://github.com/LanzHarry/dotfiles.git ~/dotfiles`
 - `cd` into `~/dotfiles`
-- Run `bash install.sh`
+- Run `bash install.sh` (add `-n` flag to dry run)
 
 ## Packages
 - `bash`: .bashrc, .bash_aliases
