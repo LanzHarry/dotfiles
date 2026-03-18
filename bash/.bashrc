@@ -16,8 +16,11 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+# real-time history sharing across concurrent terminals
+PROMPT_COMMAND="history -a; history -c; history -r${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -113,6 +116,19 @@ fi
 
 # disable terminal flow control
 stty -ixon
+
+# what editor to use by default
+export EDITOR=nvim
+export VISUAL=nvim
+
+# QoL shopts
+shopt -s autocd # type dir name with no cd to change dir
+shopt -s cdspell # fix minor typos in cd args
+shopt -s dirspell # fix minor typos on tab press rather than enter
+shopt -s globstar # ** matches at any depth, e.g. nvim **/*.lua would open all lua files in a tree
+shopt -s nocaseglob # case-insensitive glob expansion
+shopt -s histverify # when using !! or !$ this shows the command first rather than executing
+shopt -s cmdhist # save multi-line commands as a single history entry than separate lines
 
 # source the local bashrc for machine specific settings if it exists
 [ -f ~/.bashrc.local ] && source ~/.bashrc.local

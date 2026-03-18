@@ -1,0 +1,19 @@
+# case insensitive completion
+set completion-ignore-case on
+
+# treat - and _ as equivalent in completion
+set completion-map-case on
+
+# show all completions immediately on first tab rather than double
+set show-all-if-ambiguous on
+
+# colour the common prefix of completions
+set colored-completion-prefix on
+
+# colour ls-style completions by file type
+set colored-stats on
+
+# navigate completions with arrow keys when list is long
+set menu-complete-display-prefix on
+"\e[A": history-search-backward
+"\e[B": history-search-forward
