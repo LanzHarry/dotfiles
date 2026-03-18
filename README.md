@@ -2,7 +2,7 @@
 Managed with stow (e.g. install with `sudo apt install stow`)
 
 ## Install
-- `clone` into a local repo `~/dotfiles`
+- `clone` this repo into a local repo e.g. `git clone https://github.com/LanzHarry/dotfiles.git ~/dotfiles`
 - `cd` into `~/dotfiles`
 - Run `bash install.sh`
 
