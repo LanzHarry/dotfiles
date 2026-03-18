@@ -1,0 +1,19 @@
+# Provides cross-editor baseline config 
+# This controls indentation defaults and whitespace handling but not full formatting style
+# This will affect live editing behaviour as this file is read on buffer enter for matching file types
+# Other sources of formatting include toml files and .lua files in after/ftplugins/*.lua
+
+# if .editorconfig is in a project root rather than ~/.editorconfig this will stop the search
+root = true
+
+# settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# settings for lua files only
+[*.lua]
+indent_style = space
+indent_size = 2
