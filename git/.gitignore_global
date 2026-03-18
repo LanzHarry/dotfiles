@@ -1,0 +1,38 @@
+# editors
+.vscode/
+*.swp
+*.swo
+*~
+
+# environment files
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# tools
+.direnv/
+
+# misc
+*.tmp
+*.log
+*.local
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# node
+node_modules/
+dist/
+.next/
+
+# docker
+.docker/

@@ -1,0 +1,48 @@
+[user]
+	name = Harry Lanz
+	email = harry.lanz@proton.me
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
+	safecrlf = warn
+	excludesfile = ~/.gitignore_global
+	editor = nvim
+	pager = less -FRX
+	whitespace = fix
+[diff]
+	colorMoved = default
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff
+	conflictstyle = diff3
+[push]
+	default = current
+	autoSetupRemote = true
+[rebase]
+	autoStash = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[log]
+	abbrevCommit = true
+	follow = true
+[status]
+	showUntrackedFiles = all
+[help]
+	autocorrect = prompt
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential
+[alias]
+	undo = reset HEAD~1 --mixed
+	unstage = restore --staged
+	aliases = config --get-regexp alias
+	sw = switch
+	br = branch
+	cm = commit
+	st = status
+	lg = log --oneline --graph --decorate --all -n 20
+	pu = push

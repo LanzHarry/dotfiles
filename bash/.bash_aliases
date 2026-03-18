@@ -18,7 +18,7 @@ alias gs='git status -u'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
-alias gl='git log --oneline --graph --decorate --all'
+alias gl='git log --oneline --graph --decorate --all -n 20'
 
 # docker
 alias dps='docker ps'
