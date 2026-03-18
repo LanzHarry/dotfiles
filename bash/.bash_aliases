@@ -1,0 +1,10 @@
+alias vim="nvim"
+alias vi="nvim"
+alias nv="nvim"
+alias py="python3"
+alias python="python3"
+alias ls="lsd"
+alias ll='ls -alF'
+alias la='ls -A'
+alias lst="lsd --tree -I .git -I node_modules"
+alias l='ls -CF'
