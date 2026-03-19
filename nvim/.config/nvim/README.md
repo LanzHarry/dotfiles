@@ -1,2 +1,2 @@
 # NeoVim config
-Now managed under dotfiles with other configs. This repo is an archive.
+NeoVim config managed as part of dotfiles repo.
