@@ -15,6 +15,7 @@ Thumbs.db
 
 # tools
 .direnv/
+.claude/settings.local.json
 
 # misc
 *.tmp
