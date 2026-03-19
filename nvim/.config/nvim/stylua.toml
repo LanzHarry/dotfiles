@@ -1,0 +1,9 @@
+# Stylua config
+# Controls how lua files are rewritten and formatted when stylua runs
+# Stored in project root so project specific settings can be used
+# Other sources of settings for lua might be in .editorconfig or after/ftplugins/lua.lua
+
+indent_type = "Spaces" # use spaces and not tabs
+indent_width = 2 # two spaces per indentation level
+column_width = 100 # some wrapping decisions based on this
+line_endings = "Unix" # use \n for line endings

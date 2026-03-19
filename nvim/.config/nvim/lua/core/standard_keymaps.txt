@@ -1,0 +1,244 @@
+-- This is a list of standard(ish) keymaps from prompting an LLM, potentially
+-- useful to cover some missing community standard mappings
+
+-- Community-standard-ish Neovim remaps (a grab-bag most dev configs converge on)
+-- Drop into: lua/config/keymaps.lua (or similar) and require() it from init.lua
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+-- ============================================================================
+-- Safer / nicer defaults
+-- ============================================================================
+
+-- Disable Ex mode
+map("n", "Q", "<nop>", opts)
+
+-- Make Y behave like C/D (yank to end of line)
+map("n", "Y", "y$", opts)
+
+-- Better up/down for wrapped lines
+map("n", "j", "gj", opts)
+map("n", "k", "gk", opts)
+
+-- Keep cursor centred when jumping around
+map("n", "<C-d>", "<C-d>zz", opts)
+map("n", "<C-u>", "<C-u>zz", opts)
+map("n", "n", "nzzzv", opts)
+map("n", "N", "Nzzzv", opts)
+
+-- Join lines without moving cursor to end
+map("n", "J", "mzJ`z", opts)
+
+-- Keep selection when indenting in visual mode
+map("v", "<", "<gv", opts)
+map("v", ">", ">gv", opts)
+
+-- Move selected lines up/down
+map("v", "J", ":m '>+1<CR>gv=gv", opts)
+map("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+-- Paste over selection without overwriting unnamed register
+map("x", "p", '"_dP', opts)
+
+-- Keep yank in register when deleting single char
+map("n", "x", '"_x', opts)
+
+-- Quick escape from insert
+map("i", "jk", "<Esc>", opts)        -- common
+-- map("i", "jj", "<Esc>", opts)     -- alternative
+
+-- ============================================================================
+-- System clipboard (very common)
+-- ============================================================================
+
+map({ "n", "v" }, "<leader>y", '"+y', opts)
+map("n", "<leader>Y", '"+Y', opts)
+map({ "n", "v" }, "<leader>p", '"+p', opts)
+map({ "n", "v" }, "<leader>P", '"+P', opts)
+
+-- Delete without yanking (black-hole register)
+map({ "n", "v" }, "<leader>d", '"_d', opts)
+
+-- ============================================================================
+-- Saving / quitting
+-- ============================================================================
+
+map("n", "<leader>w", "<cmd>w<CR>", opts)
+map("n", "<leader>q", "<cmd>q<CR>", opts)
+map("n", "<leader>Q", "<cmd>qa<CR>", opts)
+map("n", "<leader>x", "<cmd>x<CR>", opts) -- write + quit
+
+-- ============================================================================
+-- Splits / windows
+-- ============================================================================
+
+-- Create splits
+map("n", "<leader>sv", "<cmd>vsplit<CR>", opts)
+map("n", "<leader>sh", "<cmd>split<CR>", opts)
+
+-- Move between splits (Ctrl-h/j/k/l is widely used)
+map("n", "<C-h>", "<C-w>h", opts)
+map("n", "<C-j>", "<C-w>j", opts)
+map("n", "<C-k>", "<C-w>k", opts)
+map("n", "<C-l>", "<C-w>l", opts)
+
+-- Resize splits
+map("n", "<C-Up>", "<cmd>resize +2<CR>", opts)
+map("n", "<C-Down>", "<cmd>resize -2<CR>", opts)
+map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
+map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
+
+-- Equalise / close split
+map("n", "<leader>se", "<C-w>=", opts)
+map("n", "<leader>sc", "<cmd>close<CR>", opts)
+
+-- ============================================================================
+-- Buffers / tabs
+-- ============================================================================
+
+-- Buffer navigation
+map("n", "<S-h>", "<cmd>bprevious<CR>", opts) -- many configs use Shift-h/l
+map("n", "<S-l>", "<cmd>bnext<CR>", opts)
+map("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
+map("n", "<leader>bn", "<cmd>enew<CR>", opts)
+
+-- Tabs (less universal than buffers, but common)
+map("n", "<leader>tn", "<cmd>tabnew<CR>", opts)
+map("n", "<leader>to", "<cmd>tabonly<CR>", opts)
+map("n", "<leader>tc", "<cmd>tabclose<CR>", opts)
+map("n", "<leader>tl", "<cmd>tabnext<CR>", opts)
+map("n", "<leader>th", "<cmd>tabprevious<CR>", opts)
+
+-- ============================================================================
+-- Terminal
+-- ============================================================================
+
+-- Leave terminal mode quickly
+map("t", "<Esc>", "<C-\\><C-n>", opts)
+map("t", "jk", "<C-\\><C-n>", opts)
+
+-- Terminal window navigation (so Ctrl-h/j/k/l works everywhere)
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", opts)
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", opts)
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", opts)
+
+-- Open a terminal split
+map("n", "<leader>tt", "<cmd>split | terminal<CR>", opts)
+
+-- ============================================================================
+-- Search / highlight toggles
+-- ============================================================================
+
+-- Clear search highlight
+map("n", "<leader>nh", "<cmd>nohlsearch<CR>", opts)
+
+-- Toggle spell / wrap / listchars (handy for writing + code)
+map("n", "<leader>ts", function() vim.opt.spell = not vim.opt.spell:get() end, opts)
+map("n", "<leader>tw", function() vim.opt.wrap = not vim.opt.wrap:get() end, opts)
+map("n", "<leader>tl", function() vim.opt.list = not vim.opt.list:get() end, opts)
+
+-- ============================================================================
+-- Quickfix / location list
+-- ============================================================================
+
+map("n", "<leader>co", "<cmd>copen<CR>", opts)
+map("n", "<leader>cc", "<cmd>cclose<CR>", opts)
+map("n", "]q", "<cmd>cnext<CR>", opts)
+map("n", "[q", "<cmd>cprev<CR>", opts)
+
+map("n", "<leader>lo", "<cmd>lopen<CR>", opts)
+map("n", "<leader>lc", "<cmd>lclose<CR>", opts)
+map("n", "]l", "<cmd>lnext<CR>", opts)
+map("n", "[l", "<cmd>lprev<CR>", opts)
+
+-- ============================================================================
+-- Diagnostics (built-in)
+-- ============================================================================
+
+map("n", "<leader>e", vim.diagnostic.open_float, opts)
+map("n", "[d", vim.diagnostic.goto_prev, opts)
+map("n", "]d", vim.diagnostic.goto_next, opts)
+map("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>", opts) -- if using Telescope
+
+-- ============================================================================
+-- LSP (built-in) — these are very widely used conventions
+-- ============================================================================
+
+map("n", "gd", vim.lsp.buf.definition, opts)
+map("n", "gD", vim.lsp.buf.declaration, opts)
+map("n", "gi", vim.lsp.buf.implementation, opts)
+map("n", "gr", vim.lsp.buf.references, opts)
+map("n", "K", vim.lsp.buf.hover, opts)
+map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+
+map("n", "<leader>rn", vim.lsp.buf.rename, opts)
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
+
+-- ============================================================================
+-- Telescope (if you use it) — near-universal leader bindings
+-- ============================================================================
+
+-- Requires: nvim-telescope/telescope.nvim
+map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
+map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
+map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
+map("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", opts)
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
+map("n", "<leader>fc", "<cmd>Telescope commands<CR>", opts)
+map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", opts)
+
+-- ============================================================================
+-- Git (pick your plugin)
+-- ============================================================================
+
+-- Fugitive-style
+map("n", "<leader>gs", "<cmd>Git<CR>", opts)
+map("n", "<leader>gc", "<cmd>Git commit<CR>", opts)
+map("n", "<leader>gp", "<cmd>Git push<CR>", opts)
+map("n", "<leader>gl", "<cmd>Git pull<CR>", opts)
+
+-- Gitsigns-style (if installed)
+map("n", "]h", "<cmd>Gitsigns next_hunk<CR>", opts)
+map("n", "[h", "<cmd>Gitsigns prev_hunk<CR>", opts)
+map("n", "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>", opts)
+map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>", opts)
+map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>", opts)
+map("n", "<leader>hb", "<cmd>Gitsigns blame_line<CR>", opts)
+
+-- ============================================================================
+-- File explorer (pick one)
+-- ============================================================================
+
+-- Netrw toggle (built-in; many people disable netrw when using a plugin)
+map("n", "<leader>pv", "<cmd>Ex<CR>", opts)
+
+-- nvim-tree toggle
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+
+-- oil.nvim (edit filesystem like a buffer)
+map("n", "<leader>o", "<cmd>Oil<CR>", opts)
+
+-- ============================================================================
+-- “Quality of life” text editing
+-- ============================================================================
+
+-- Make <leader><leader> cycle buffers (quick muscle memory)
+map("n", "<leader><leader>", "<cmd>b#<CR>", opts)
+
+-- Replace word under cursor across file (classic: start :%s/\<word\>/word/gI)
+map("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap = true })
+
+-- Toggle relative line numbers
+map("n", "<leader>tr", function()
+  vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end, opts)
+
+-- Make space do nothing in normal/visual (prevents accidental moves; keeps leader clean)
+map({ "n", "v" }, "<Space>", "<nop>", opts)
