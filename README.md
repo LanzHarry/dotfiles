@@ -8,6 +8,10 @@ Managed with stow (e.g. install with `sudo apt install stow`)
 
 ## Packages
 - `bash`: .bashrc, .bash_aliases
+- `editorconfig`: .editorconfig
+- `git`: .gitconfig, .gitignore_global
+- `nvim`: .config (dir)
+- `tmux`: tmux.conf and tmux.conf.local based on `https://github.com/gpakosz/.tmux`
 
 ## Machine-specific config
 Create `~/.bashrc.local` for any additional local settings or overrides (.local files are ignored by this repo. and .bashrc.local is automatically sourced by the dotfiles .bashrc)
