@@ -7,7 +7,7 @@ alias python="python3"
 alias ls="lsd"
 alias ll='ls -alF'
 alias la='ls -A'
-alias lst="ls --tree -I .git -I node_modules"
+alias lst="ls --tree -I .git -I node_modules -I .venv"
 
 # navigation
 alias ..='cd ..'
@@ -26,5 +26,5 @@ alias dcu='docker compose up -d'
 alias dcd='docker compose down'
 
 # quick config editing
-alias bashrc='nvim ~/dotfiles/bash/.bashrc && source ~/.bashrc'
+alias bashrc='nvim ~/.bashrc.local && source ~/.bashrc'
 alias aliases='nvim ~/dotfiles/bash/.bash_aliases && source ~/.bash_aliases'
