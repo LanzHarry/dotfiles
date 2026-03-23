@@ -115,7 +115,9 @@ map("n", "<C-l>", "<cmd>wincmd l<CR>", "Navigate to split right")
 -- buffer navigation
 map("n", "<Tab>", "<cmd>bnext<CR>", "Go to next buffer")
 map("n", "<S-Tab>", "<cmd>bprevious<CR>", "Go to previous buffer")
-map("n", "<leader>x", "<cmd>bdelete<CR>", "Close current buffer") -- sane buffer deletion can be added later with mini?
+map("n", "<leader>x", function()
+  MiniBufremove.delete(0, false)
+end, "Close current buffer") -- sane buffer deletion can be added later with mini?
 map("n", "<leader>b", "<cmd>enew<CR>", "Open new buffer")
 
 -- tabs

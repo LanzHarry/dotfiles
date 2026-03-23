@@ -3,6 +3,7 @@ return {
   version = false,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    "nvim-mini/mini.nvim",
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
@@ -10,7 +11,9 @@ return {
       mode = "buffers", -- set to "tabs" to only show tabpages instead
       themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
       numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-      close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+      close_command = function(bufnr)
+        MiniBufremove.delete(bufnr, false)
+      end, -- can be a string | function, see "Mouse actions"
       buffer_close_icon = "",
       close_icon = "",
       path_components = 1, -- Show only the file name without the directory
