@@ -22,3 +22,16 @@ These plugins are manually installed dependencies:
 - Ripgrep
 - fzf and telescope-fzf-native
 - fd (fdfind on linux then symlink with `ln -s $(which fdfind) ~/.local/bin/fd`)
+
+## Todo
+General tooling to download and configure:
+- `zsh` to replace `bash` (then `.bashrc` and local version need to be converted)
+- `starship` for command line customisation
+- `bat` to replace `cat`
+- `eza` to replace `ls` (maybe `lsd` is also fine?)
+- `delta` for git diffs
+- `yazi` for in terminal file manager
+- `lazygit` / `lazydocker` ?
+- `btop` to replace `htop`
+- `zoxide` to replace `cd`
+- `tldr` for man style cheat sheets
