@@ -4,3 +4,13 @@
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+
+[python]
+symbol = "py "
+
+[nodejs]
+symbol = "node "

@@ -1,5 +1,21 @@
 # ~/.zshrc
 
+# --- Path config ---
+path=(
+    $path
+    $HOME/bin
+    $HOME/.local/bin
+)
+
+# deduplicate and remove non existent paths
+typeset -U path
+path=($^path(N-/))
+
+export PATH
+
+# --- set vim style input ---
+bindkey -v
+
 # --- History ---
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
@@ -33,7 +49,16 @@ export VISUAL=nvim
 # --- Aliases ---
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# --- Homebrew ---
+[[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
 # --- Starship prompt ---
+# prevent recursive definition of zle keymap
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+
 eval "$(starship init zsh)"
 
 # --- zoxide ---
