@@ -1,0 +1,30 @@
+# general QoL
+alias vim="nvim"
+alias vi="nvim"
+alias nv="nvim"
+alias py="python3"
+alias python="python3"
+alias ls="lsd"
+alias ll='ls -alF'
+alias la='ls -A'
+alias lst="ls --tree -I .git -I node_modules -I .venv"
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# git
+alias gs='git status -u'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate --all -n 20'
+
+# docker
+alias dps='docker ps'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+
+# quick config editing
+alias zshrc='nvim ~/.zshrc.local && source ~/.zshrc'
+alias aliases='nvim ~/dotfiles/zsh/.aliases && source ~/.aliases'

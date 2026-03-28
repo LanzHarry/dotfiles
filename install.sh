@@ -2,7 +2,7 @@
 set -e  # exit on any error
 
 DOTFILES="$HOME/dotfiles"
-EXCLUDE=()
+EXCLUDE=("bash")
 DRY_RUN=""
 
 [[ "$1" == "-n" ]] && DRY_RUN="-n" && echo "Dry run mode"
