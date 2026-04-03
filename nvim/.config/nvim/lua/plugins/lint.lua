@@ -14,14 +14,15 @@ return {
   config = function()
     local lint = require("lint")
     local cppcheck = require("config.cppcheck_config")
-
     lint.linters_by_ft = {
       c = { "cppcheck" },
       cpp = { "cppcheck" },
+      css = { "stylelint" }, -- might need .stylelintrc.json at project level
+      dockerfile = { "hadolint" },
+      html = { "htmlhint" },
+      javascript = { "eslint_d" },
       typescript = { "eslint_d" },
       typescriptreact = { "eslint_d" },
-      javascript = { "eslint_d" },
-      dockerfile = { "hadolint" },
       -- python = { "ruff" },
     }
 

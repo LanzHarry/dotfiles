@@ -7,17 +7,19 @@ return {
   opts = {
     notify_on_error = false,
     formatters_by_ft = {
-      cpp = { "clang_format" },
       c = { "clang_format" },
+      cpp = { "clang_format" },
+      css = { "prettierd" },
       h = { "clang_format" },
+      html = { "prettierd" },
+      javascript = { "prettierd" },
+      json = { "prettierd" },
       lua = { "stylua" },
       python = { "ruff_format" },
+      sql = { "sql_formatter" },
       typescript = { "prettierd" },
       typescriptreact = { "prettierd" },
-      javascript = { "prettierd" },
       yaml = { "prettierd" },
-      json = { "prettierd" },
-      sql = { "sql_formatter" },
     },
     format_on_save = function(bufnr)
       if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -25,7 +27,7 @@ return {
       else
         return {
           timeout_ms = 2000,
-          lsp_fallback = false,
+          lsp_format = "never",
         }
       end
     end,
@@ -36,7 +38,7 @@ return {
       function()
         require("conform").format({
           async = true,
-          lsp_fallback = false,
+          lsp_format = "never",
           timeout_ms = 2000,
         })
       end,

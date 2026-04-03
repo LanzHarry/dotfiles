@@ -14,7 +14,12 @@ return {
         end
         return "make install_jsregexp"
       end)(),
-      opts = {},
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+      },
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
     },
   },
   -- use a release tag to download pre-built binaries

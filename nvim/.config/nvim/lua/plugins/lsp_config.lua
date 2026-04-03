@@ -37,7 +37,19 @@ return {
           end,
         },
 
+        cssls = {
+          init_options = {
+            provideFormatter = false,
+          },
+        },
+
         dockerls = {}, -- dockerfile
+
+        html = {
+          init_options = {
+            provideFormatter = false,
+          },
+        },
 
         pyright = {}, -- python
 
@@ -48,7 +60,7 @@ return {
           end,
         },
 
-        sqls = {},
+        sqls = {}, -- unmaintained? check for sqlls
 
         ts_ls = {},
 
@@ -70,10 +82,12 @@ return {
         "clang-format", -- c/c++ formatter
         "eslint_d", -- linter for js and ts
         "hadolint", -- linter for dockerfiles
+        "htmlhint", -- html linter
         "lua-language-server", -- this is here as the setup is handled manually below
-        "prettierd", -- formatter for js and ts
-        "stylua", -- lua formatter
+        "prettierd", -- formatter for js and ts (and others...)
         "sql-formatter", -- formatter for sql
+        "stylelint", -- css linter
+        "stylua", -- lua formatter
       })
 
       require("mason-tool-installer").setup({
