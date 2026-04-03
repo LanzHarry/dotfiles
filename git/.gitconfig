@@ -1,48 +1,56 @@
 [user]
-	name = Harry Lanz
-	email = harry.lanz@proton.me
+    name = Harry Lanz
+    email = harry.lanz@proton.me
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [core]
-	autocrlf = input
-	safecrlf = warn
-	excludesfile = ~/.gitignore_global
-	editor = nvim
-	pager = less -FRX
-	whitespace = fix
+    autocrlf = input
+    safecrlf = warn
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+    pager = less -FRX
+    whitespace = fix
 [diff]
-	colorMoved = default
-	tool = nvimdiff
+    colorMoved = default
+    tool = nvimdiff
 [merge]
-	tool = nvimdiff
-	conflictstyle = diff3
+    tool = nvimdiff
+    conflictstyle = diff3
 [push]
-	default = current
-	autoSetupRemote = true
+    default = current
+    autoSetupRemote = true
 [rebase]
-	autoStash = true
+    autoStash = true
 [pull]
-	rebase = true
+    rebase = true
 [fetch]
-	prune = true
+    prune = true
 [log]
-	abbrevCommit = true
-	follow = true
+    abbrevCommit = true
+    follow = true
 [status]
-	showUntrackedFiles = all
+    showUntrackedFiles = all
 [help]
-	autocorrect = prompt
+    autocorrect = prompt
 [credential "https://github.com"]
-	helper = !gh auth git-credential
+    helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = !gh auth git-credential
+    helper = !gh auth git-credential
 [alias]
-	undo = reset HEAD~1 --mixed
-	unstage = restore --staged
-	aliases = config --get-regexp alias
-	sw = switch
-	br = branch
-	cm = commit
-	st = status
-	lg = log --oneline --graph --decorate --all -n 20
-	pu = push
+    undo = reset HEAD~1 --mixed
+    unstage = restore --staged
+    aliases = config --get-regexp alias
+    sw = switch
+    br = branch
+    cm = commit
+    st = status
+    lg = log --oneline --graph --decorate --all -n 20
+    pu = push
+[gpg]
+    format = ssh
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+    gpgsign = true
+[include]
+    path = ~/.gitconfig.local
