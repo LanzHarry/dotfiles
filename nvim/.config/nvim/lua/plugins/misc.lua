@@ -34,4 +34,10 @@ return {
       -- add any options here
     },
   },
+  -- color visualisation in editor
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {},
+  },
 }
