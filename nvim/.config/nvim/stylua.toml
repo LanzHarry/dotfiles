@@ -7,3 +7,6 @@ indent_type = "Spaces" # use spaces and not tabs
 indent_width = 2 # two spaces per indentation level
 column_width = 100 # some wrapping decisions based on this
 line_endings = "Unix" # use \n for line endings
+quote_style = "AutoPreferDouble"
+call_parentheses = "Always"
+collapse_simple_statement = "Never"
