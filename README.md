@@ -7,25 +7,24 @@ Managed with stow (e.g. install with `sudo apt install stow`)
 - Run `bash install.sh` (add `-n` flag to dry run)
 
 ## Packages
-- `bash`: .bashrc, .bash_aliases
-- `editorconfig`: .editorconfig
-- `git`: .gitconfig, .gitignore_global
-- `nvim`: .config (dir)
+- `bash`: `.zshrc` and aliases
+- `editorconfig`: `.editorconfig` in home dir so will be found when looking up the filesystem
+- `git`: `.gitconfig`, `.gitignore_global`
+- `nvim`: `.config` dir for whole editor
 - `tmux`: tmux.conf and tmux.conf.local based on `https://github.com/gpakosz/.tmux`
 
 ## Machine-specific config
-Create `~/.bashrc.local` for any additional local settings or overrides (.local files are ignored by this repo. and .bashrc.local is automatically sourced by the dotfiles .bashrc)
+Create `~/.zshrc.local` for any additional local settings or overrides (`.local` files are ignored by this repo and `.zshrc.local` is automatically sourced by the dotfiles `.zshrc`). There is an example file in the repo.
 
-## Dependencies
-### Neovim plugin dependencies
-These plugins are manually installed dependencies:
-- Ripgrep
-- fzf and telescope-fzf-native
-- fd (fdfind on linux then symlink with `ln -s $(which fdfind) ~/.local/bin/fd`)
+## Dependencies and tooling
+The following tools are QoL improvements over many standard Linux features and some are requirements for full functionality in NeoVim plugins
+- `Ripgrep`
+- `fzf` and `telescope-fzf-native`
+- `fd` (fdfind on linux then symlink with `ln -s $(which fdfind) ~/.local/bin/fd`)
+- `zoxide` to replace cd
 
 ## Todo
 General tooling to download and configure:
-- `zsh` to replace `bash` (then `.bashrc` and local version need to be converted)
 - `starship` for command line customisation
 - `bat` to replace `cat`
 - `eza` to replace `ls` (maybe `lsd` is also fine?)
@@ -33,5 +32,8 @@ General tooling to download and configure:
 - `yazi` for in terminal file manager
 - `lazygit` / `lazydocker` ?
 - `btop` to replace `htop`
-- `zoxide` to replace `cd`
 - `tldr` for man style cheat sheets
+- `broot`
+- `jq` and `yq`
+- `xargs`
+- `procs`
