@@ -1,0 +1,22 @@
+# ~/.zshrc.local - machine specific config, not tracked in dotfiles
+
+# SSH agent (could use ssh-agent also)
+# eval "$(keychain --eval --quiet id_ed25519)"
+
+# envman
+[[ -s "$HOME/.config/envman/load.sh" ]] && source "$HOME/.config/envman/load.sh"
+
+# Rust/cargo
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+[[ -s "$NVM_DIR/zsh_completion" ]] && source "$NVM_DIR/zsh_completion"
+
+# pnpm
+export PNPM_HOME="/home/harry/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
