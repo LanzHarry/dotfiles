@@ -19,7 +19,9 @@ autocmd("FileType", {
 
 autocmd("TextYankPost", {
   desc = "Highlight yanked text temporarily",
-  callback = vim.highlight.on_yank,
+  callback = function()
+    vim.highlight.on_yank()
+  end
 })
 
 -- checktime to make autoread = true (in options) behave reliably
