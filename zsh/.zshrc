@@ -7,12 +7,6 @@ path=(
     $HOME/.local/bin
 )
 
-# deduplicate and remove non existent paths
-typeset -U path
-path=($^path(N-/))
-
-export PATH
-
 # --- set vim style input ---
 bindkey -v
 
@@ -72,3 +66,9 @@ stty -ixon
 
 # --- Machine-specific local config ---
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# deduplicate and remove non existent paths
+typeset -U path
+path=($^path(N-/))
+
+export PATH
