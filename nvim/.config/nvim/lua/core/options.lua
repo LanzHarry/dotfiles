@@ -73,17 +73,25 @@ vim.opt.modeline = false -- disable modeline for no arbitrary code exec
 
 -- diagnostic settings
 vim.diagnostic.config({
+  update_in_insert = false,
+  severity_sort = true,
+  float = { source = true },
+  underline = { severity = { min = vim.diagnostic.severity.WARN } },
   virtual_text = false,
   virtual_lines = {
     current_line = true,
     -- min = vim.diagnostic.severity.WARN,
   },
   signs = true,
-  underline = true,
-  severity_sort = true,
-  update_in_insert = false,
-  float = { source = true },
-  jump = { float = true },
+  jump = {
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float({
+        bufnr = bufnr,
+        scope = "cursor",
+        focus = false,
+      })
+    end
+  }
 })
 
 vim.api.nvim_set_hl(0, "DiagnosticDeprecated", {
