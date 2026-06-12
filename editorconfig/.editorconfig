@@ -1,9 +1,11 @@
-# Provides cross-editor baseline config 
+# Provides cross-editor baseline config
 # This controls indentation defaults and whitespace handling but not full formatting style
 # This will affect live editing behaviour as this file is read on buffer enter for matching file types
-# Other sources of formatting include toml files and .lua files in after/ftplugins/*.lua
+# Some save-time behaviour is also configured here such as trimming of whitespace and final newlines
+# Other sources of formatting include config files for formatters, options.lua, and after/ftplugins files
 
-# if .editorconfig is in a project root rather than ~/.editorconfig this will stop the search
+# settings root = true here stops editorconfig from searching any higher than ~
+# if a local .editorconfig file is made for a project root = true will prevent searching higher than that project root
 root = true
 
 # settings for all files
@@ -17,3 +19,7 @@ trim_trailing_whitespace = true
 [*.lua]
 indent_style = space
 indent_size = 2
+
+# settings for markdown files only
+[*.md]
+trim_trailing_whitespace = false
