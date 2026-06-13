@@ -1,3 +1,9 @@
+-- disable legacy providers (for clean checkhealth)
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- visual options
 vim.opt.number = true -- make line numbers visible
 vim.opt.relativenumber = true -- set line numbers to be relative to current line
