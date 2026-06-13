@@ -7,7 +7,7 @@ Managed with stow (e.g. install with `sudo apt install stow`)
 - Run `bash install.sh` (add `-n` flag to dry run)
 
 ## Packages
-- `bash`: `.zshrc` and aliases
+- `zsh`: `.zshrc` and aliases
 - `editorconfig`: `.editorconfig` in home dir so will be found when looking up the filesystem
 - `git`: `.gitconfig`, `.gitignore_global`
 - `nvim`: `.config` dir for whole editor
@@ -22,12 +22,12 @@ The following tools are QoL improvements over many standard Linux features and s
 - `fzf` and `telescope-fzf-native`
 - `fd` (fdfind on linux then symlink with `ln -s $(which fdfind) ~/.local/bin/fd`)
 - `zoxide` to replace cd
+- `eza` to replace ls
+- `starship` for command line customisation
 
 ## Todo
 General tooling to download and configure:
-- `starship` for command line customisation
 - `bat` to replace `cat`
-- `eza` to replace `ls` (maybe `lsd` is also fine?)
 - `delta` for git diffs
 - `yazi` for in terminal file manager
 - `lazygit` / `lazydocker` ?

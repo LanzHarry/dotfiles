@@ -6,5 +6,5 @@ set.linebreak = true -- lines will not wrap mid word
 set.breakindent = true -- wrapped lines will match indent of original line
 
 set.spell = true
-set.spellland = "en_gb"
+set.spelllang = "en_gb"
 
