@@ -13,3 +13,6 @@ In the NeoVim config itself are `options.lua` for global settings and file type 
 LSPs often include formatting capabilities and these should be disabled when explicit formatting capabilities are deferred to plugins/formatters like conform. This is done with the `on_attach` callback in LSP configuration.
 
 Using autocommands per-buffer autoformatting can be toggled on and off if legacy files need to be edited without causing massive diffs.
+
+### Plugins
+Plugins are managed by vim.pack
