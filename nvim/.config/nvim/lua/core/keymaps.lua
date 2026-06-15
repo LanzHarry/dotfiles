@@ -1,7 +1,7 @@
 -- remap helper function
 -- silent = true by default, override by providing opts table as input
 local function map(mode, lhs, rhs, desc, opts)
-  local options = vim.tbl_extend('force', { silent = true, desc = desc }, opts or {})
+  local options = vim.tbl_extend("force", { silent = true, desc = desc }, opts or {})
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
@@ -57,7 +57,13 @@ map("x", "<M-k>", ":m '<-2<CR>gv=gv", "Move selection up")
 map("n", "J", "mzJ`z", "Join lines but keep cursor in place")
 
 -- find and replace mappings
-map("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]], "Find and replace word under cursor", { silent = false })
+map(
+  "n",
+  "<leader>rr",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]],
+  "Find and replace word under cursor",
+  { silent = false }
+)
 
 -- toggle line wrapping
 map("n", "<leader>lw", "<cmd>set wrap!<CR>", "Toggle line wrapping")

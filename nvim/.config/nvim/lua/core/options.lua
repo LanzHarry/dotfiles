@@ -96,8 +96,8 @@ vim.diagnostic.config({
         scope = "cursor",
         focus = false,
       })
-    end
-  }
+    end,
+  },
 })
 
 vim.api.nvim_set_hl(0, "DiagnosticDeprecated", {

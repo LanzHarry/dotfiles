@@ -3,7 +3,7 @@ vim.pack.add({ "https://github.com/stevearc/conform.nvim.git" })
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
-  }
+  },
 })
 
 local augroup = vim.api.nvim_create_augroup

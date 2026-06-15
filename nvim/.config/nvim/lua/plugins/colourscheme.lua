@@ -5,9 +5,9 @@ require("tokyonight").setup({
     comments = { italic = false },
   },
   on_highlights = function(highlights, colours)
-    highlights.LineNr = { fg = colours.magenta2}
-    highlights.LineNrAbove = { fg = colours.magenta2}
-    highlights.LineNrBelow = { fg = colours.magenta2}
+    highlights.LineNr = { fg = colours.magenta2 }
+    highlights.LineNrAbove = { fg = colours.magenta2 }
+    highlights.LineNrBelow = { fg = colours.magenta2 }
   end,
 })
 

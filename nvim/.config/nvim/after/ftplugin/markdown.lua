@@ -7,4 +7,3 @@ set.breakindent = true -- wrapped lines will match indent of original line
 
 set.spell = true
 set.spelllang = "en_gb"
-

@@ -14,14 +14,14 @@ autocmd("FileType", {
   desc = "Disable auto comment insertion",
   callback = function()
     vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-  end
+  end,
 })
 
 autocmd("TextYankPost", {
   desc = "Highlight yanked text temporarily",
   callback = function()
     vim.highlight.on_yank()
-  end
+  end,
 })
 
 -- checktime to make autoread = true (in options) behave reliably
@@ -29,7 +29,7 @@ autocmd({ "FocusGained", "BufEnter" }, {
   desc = "Check if file has changed on disk",
   callback = function()
     vim.cmd.checktime()
-  end
+  end,
 })
 
 autocmd("BufReadPost", {
@@ -40,7 +40,7 @@ autocmd("BufReadPost", {
     if mark[1] > 0 and mark[1] <= line_count then
       vim.api.nvim_win_set_cursor(0, mark)
     end
-  end
+  end,
 })
 
 autocmd("FileType", {
@@ -48,12 +48,12 @@ autocmd("FileType", {
   pattern = { "help", "qf", "man", "notify", "lspinfo" },
   callback = function(event)
     vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
-  end
+  end,
 })
 
 autocmd("VimResized", {
   desc = "Equalise splits on window resize",
   callback = function()
     vim.cmd("tabdo wincmd =")
-  end
+  end,
 })
