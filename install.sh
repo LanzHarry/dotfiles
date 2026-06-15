@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -e  # exit on any error
+
+set -e
 
 DOTFILES="$HOME/dotfiles"
 EXCLUDE=("bash")
@@ -9,9 +10,9 @@ DRY_RUN=""
 
 for dir in "$DOTFILES"/*/; do
     pkg="$(basename "$dir")"
-    [[ " ${EXCLUDE[@]} " =~ " $pkg " ]] && continue
+    [[ " ${EXCLUDE[@]} " =~ " $pkg " ]] && echo "Skipping $pkg..." && continue
     echo "Stowing $pkg..."
-    stow $DRY_RUN -v -t ~ -d "$DOTFILES" "$pkg"
+    stow $DRY_RUN -v -t ~ -d "$DOTFILES" --ignore='.*\.example' "$pkg"
 done
 
-echo "Done."
+echo "Done stowing."
