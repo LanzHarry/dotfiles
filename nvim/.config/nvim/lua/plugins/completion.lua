@@ -1,14 +1,28 @@
 vim.pack.add({
   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+  "https://github.com/rafamadriz/friendly-snippets",
 })
 
 require("blink.cmp").setup({
   keymap = { preset = "default" },
   sources = {
-    default = { "lsp", "path", "buffer" },
+    default = { "lsp", "path", "snippets", "buffer" },
   },
+  snippets = { preset = "default" },
   fuzzy = { implementation = "lua" },
   signature = { enabled = true },
+  completion = {
+    documentation = { auto_show = false },
+    menu = {
+      draw = {
+        columns = {
+          { "label", "label_description", gap = 1 },
+          { "kind_icon", "kind", gap = 1 },
+          { "source_name" },
+        },
+      },
+    },
+  },
 })
 
 -- return {
