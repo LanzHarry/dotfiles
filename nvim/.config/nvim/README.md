@@ -16,3 +16,11 @@ Using autocommands per-buffer autoformatting can be toggled on and off if legacy
 
 ### Plugins
 Plugins are managed by vim.pack
+
+### Dependencies
+These are installed manually for the most part and are external concerns to NeoVim:
+Language servers:
+- lua-language-server
+
+Formatters:
+- stylua
