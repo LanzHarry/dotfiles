@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client and client:supports_method("textDocument/inlayHint", ev.buf) then
       -- inlay hints must be enabled in .luarc.json or other settings, can also be configured
       -- to show more or less detail such as types etc.
-      vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+      vim.lsp.inlay_hint.enable(false, { bufnr = ev.buf })
       map("n", "<leader>th", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
       end, "Toggle inlay hints", { buffer = ev.buf })
