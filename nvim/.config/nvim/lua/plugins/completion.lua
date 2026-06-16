@@ -9,7 +9,12 @@ require("blink.cmp").setup({
     default = { "lsp", "path", "snippets", "buffer" },
   },
   snippets = { preset = "default" },
-  fuzzy = { implementation = "lua" },
+  fuzzy = {
+    implementation = "rust",
+    prebuilt_binaries = {
+      download = false,
+    },
+  },
   signature = { enabled = true },
   completion = {
     documentation = { auto_show = false },

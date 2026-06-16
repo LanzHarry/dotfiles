@@ -15,7 +15,8 @@ LSPs often include formatting capabilities and these should be disabled when exp
 Using autocommands per-buffer autoformatting can be toggled on and off if legacy files need to be edited without causing massive diffs.
 
 ### Plugins
-Plugins are managed by vim.pack
+Plugins are managed by vim.pack:
+- Completion: `blink.cmp` with built from source rust fuzzy finder
 
 ### Dependencies
 These are installed manually for the most part and are external concerns to NeoVim:
