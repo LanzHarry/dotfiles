@@ -1,5 +1,49 @@
 vim.lsp.enable("lua_ls")
 
+-- autocommands for lsp related features
+local augroup = vim.api.nvim_create_augroup
+
+local function map(mode, lhs, rhs, desc, opts)
+  local options = vim.tbl_extend("force", { silent = true, desc = desc }, opts or {})
+  vim.keymap.set(mode, lhs, rhs, options)
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = augroup("DefaultLspAttach", { clear = true }),
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client:supports_method("textDocument/documentHighlight", event.buf) then
+      local highlight_augroup = augroup("LspHighlightGroup", { clear = false })
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.document_highlight,
+      })
+
+      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
+
+    if client and client:supports_method("textDocument/inlayHint", event.buf) then
+      vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+      map("n", "<leader>th", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+      end, "Toggle inlay hints", { buffer = event.buf })
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspDetach", {
+  group = augroup("DefaultLspDetach", { clear = true }),
+  callback = function(event)
+    vim.lsp.buf.clear_references()
+    vim.api.nvim_clear_autocmds({ group = "LspHighlightGroup", buffer = event.buf })
+  end,
+})
+
 -- return {
 --   {
 --     "neovim/nvim-lspconfig",
