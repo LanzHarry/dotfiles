@@ -5,6 +5,10 @@ vim.pack.add({
     version = "main",
   },
 })
+-- nvim-treesitter-textobjects can extend nvim-treesitter to add smarter
+-- movements, selecitons, and node swapping. Incremental selection is built in
+-- to neovim 0.12 in visual mode, mini.ai is also treesitter aware and can help
+-- with smarter selections too.
 
 -- ensure basic parsers are installed
 local parsers = {
