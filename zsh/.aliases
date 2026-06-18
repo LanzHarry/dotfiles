@@ -6,12 +6,13 @@ alias py="python3"
 alias python="python3"
 
 # file nav and listing
+eza_all_ignore_list="node_modules"
 alias ls='eza --icons=auto'
 alias la='eza --icons=auto --all'
 alias lg='eza --icons=auto --long --git'
 alias lag='eza --icons=auto --long --all --git'
-alias lt='eza --icons=auto --tree --git-ignore'
-alias lat='eza --icons=auto --tree --all --git-ignore'
+alias lt="eza --icons=auto --tree --git-ignore --ignore-glob=${eza_all_ignore_list}"
+alias lat="eza --icons=auto --tree --all --git-ignore --ignore-glob=${eza_all_ignore_list}"
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -29,4 +30,4 @@ alias dcd='docker compose down'
 
 # quick config editing
 alias zshrc='nvim ~/.zshrc.local && source ~/.zshrc'
-alias aliases='nvim ~/dotfiles/zsh/.aliases && source ~/.aliases'
+alias aliases='nvim ~/dotfiles/zsh/.aliases && source ~/.zshrc'
