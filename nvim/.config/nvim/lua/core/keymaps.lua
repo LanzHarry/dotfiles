@@ -83,7 +83,7 @@ map("n", "]d", function()
   })
 end, "Go to next diagnostic message and open floating window")
 
-map("n", "<leader>df", vim.diagnostic.open_float, "Open diagnostic float for current line")
+map("n", "<leader>do", vim.diagnostic.open_float, "Open diagnostic float for current line")
 map("n", "<leader>dl", vim.diagnostic.setloclist, "Open diagnostics in location list")
 
 -- quickfix keymaps
