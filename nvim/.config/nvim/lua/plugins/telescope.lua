@@ -8,6 +8,17 @@ vim.pack.add({
 require("telescope").setup({
   extensions = {
     ["ui-select"] = { require("telescope.themes").get_dropdown({}) },
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "smart_case",
+    },
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
+    },
   },
 })
 
@@ -20,6 +31,33 @@ end
 if not pcall(require("telescope").load_extension, "fzf") then
   vim.notify("Failed to load fzf-native", vim.log.levels.ERROR)
 end
+
+-- custom keymaps using telescope functionality
+-- telescope has many functions that supersede the built in nvim functions,
+-- for example there are global lsp functions built in to nvim from :h lsp-defaults:
+--
+-- "gra" (Normal and Visual mode) is mapped to |vim.lsp.buf.code_action()|
+-- "gri" is mapped to |vim.lsp.buf.implementation()|
+-- "grn" is mapped to |vim.lsp.buf.rename()|
+-- "grr" is mapped to |vim.lsp.buf.references()|
+-- "grt" is mapped to |vim.lsp.buf.type_definition()|
+-- "grx" is mapped to |vim.lsp.codelens.run()|
+-- "gO" is mapped to |vim.lsp.buf.document_symbol()|
+-- CTRL-S (Insert mode) is mapped to |vim.lsp.buf.signature_help()|
+-- |v_an| and |v_in| fall back to LSP |vim.lsp.buf.selection_range()| if
+--   treesitter is not active.
+-- |gx| handles `textDocument/documentLink`. Example: with gopls, invoking gx
+--   on "os" in this Go code will open documentation externally: >
+--     package nvim
+--     import (
+--        "os"
+--     )
+local map = require("core.utils").map
+local builtin = require("telescope.builtin")
+
+map("n", "<leader>fh", builtin.help_tags, "Find help tags")
+map("n", "<leader>fk", builtin.keymaps, "Find keymaps")
+map("n", "<leader>ff", builtin.find_files, "Find files")
 
 -- return {
 --   "nvim-telescope/telescope.nvim",

@@ -1,9 +1,5 @@
--- remap helper function
--- silent = true by default, override by providing opts table as input
-local function map(mode, lhs, rhs, desc, opts)
-  local options = vim.tbl_extend("force", { silent = true, desc = desc }, opts or {})
-  vim.keymap.set(mode, lhs, rhs, options)
-end
+-- import keymap helper function
+local map = require("core.utils").map
 
 -- set leader keys and sanitisation mappings
 map({ "n", "v" }, "<Space>", "<nop>")
