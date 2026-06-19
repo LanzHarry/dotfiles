@@ -20,6 +20,7 @@ end
 if not pcall(require("telescope").load_extension, "fzf") then
   vim.notify("Failed to load fzf-native", vim.log.levels.ERROR)
 end
+
 -- return {
 --   "nvim-telescope/telescope.nvim",
 --   event = "VimEnter",
