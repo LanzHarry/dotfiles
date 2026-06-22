@@ -43,7 +43,33 @@ if not pcall(require("telescope").load_extension, "fzf") then
   vim.notify("Failed to load fzf-native", vim.log.levels.ERROR)
 end
 
--- custom keymaps using telescope functionality
+-- custom telescope picker keymaps
+local map = require("core.utils").map
+local builtin = require("telescope.builtin")
+
+map("n", "<leader>fh", builtin.help_tags, "Find help tags")
+map("n", "<leader>fk", builtin.keymaps, "Find keymaps")
+map("n", "<leader>ff", builtin.find_files, "Find files")
+map("n", "<leader>ft", builtin.builtin, "Find telescope builtins")
+map({ "n", "v" }, "<leader>fw", builtin.grep_string, "Find word")
+map("n", "<leader>fg", builtin.live_grep, "Find with grep")
+map("n", "<leader>fd", builtin.diagnostics, "Find diagnostics")
+map("n", "<leader>fr", builtin.resume, "Resume find")
+map("n", "<leader>f.", builtin.oldfiles, "Find recent files")
+map("n", "<leader>fc", builtin.commands, "Find commands")
+map("n", "<leader><leader>", builtin.buffers, "Find open buffers")
+map("n", "<leader>/", builtin.current_buffer_fuzzy_find, "Find in current buffer")
+
+-- grep in open files only
+map("n", "<leader>s/", function()
+  builtin.live_grep({ grep_open_files = true, prompt_title = "Find in open files" })
+end, "Find in open files")
+
+-- find neovim files to edit config
+map("n", "<leader>fn", function()
+  builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true })
+end, "Find NeoVim config files")
+
 -- telescope has many functions that supersede the built in nvim functions,
 -- for example there are global lsp functions built in to nvim from :h lsp-defaults:
 --
@@ -63,15 +89,6 @@ end
 --     import (
 --        "os"
 --     )
-local map = require("core.utils").map
-local builtin = require("telescope.builtin")
-
-map("n", "<leader>fh", builtin.help_tags, "Find help tags")
-map("n", "<leader>fk", builtin.keymaps, "Find keymaps")
-map("n", "<leader>ff", builtin.find_files, "Find files")
-map("n", "<leader>ft", builtin.builtin, "Find telescope builtins")
-map({ "n", "v" }, "<leader>fw", builtin.grep_string, "Find word")
-map("n", "<leader>fg", builtin.live_grep, "Find with grep")
 
 -- return {
 --   "nvim-telescope/telescope.nvim",
