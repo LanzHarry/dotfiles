@@ -5,6 +5,17 @@ vim.pack.add({
   "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 })
 
+-- dirs that should always be ignored
+local ignore_dirs = {
+  ".git",
+  "node_modules",
+  "__pycache__",
+  ".venv",
+  "venv",
+  "dist",
+  "build",
+}
+
 require("telescope").setup({
   extensions = {
     ["ui-select"] = { require("telescope.themes").get_dropdown({}) },
@@ -58,6 +69,9 @@ local builtin = require("telescope.builtin")
 map("n", "<leader>fh", builtin.help_tags, "Find help tags")
 map("n", "<leader>fk", builtin.keymaps, "Find keymaps")
 map("n", "<leader>ff", builtin.find_files, "Find files")
+map("n", "<leader>ft", builtin.builtin, "Find telescope builtins")
+map({ "n", "v" }, "<leader>fw", builtin.grep_string, "Find word")
+map("n", "<leader>fg", builtin.live_grep, "Find with grep")
 
 -- return {
 --   "nvim-telescope/telescope.nvim",

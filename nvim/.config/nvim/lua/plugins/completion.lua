@@ -15,7 +15,7 @@ require("blink.cmp").setup({
       download = false,
     },
   },
-  signature = { enabled = true },
+  signature = { enabled = true, trigger = { enabled = false } },
   completion = {
     documentation = { auto_show = false },
     menu = {
