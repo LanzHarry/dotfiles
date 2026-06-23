@@ -110,10 +110,11 @@ map("n", "<C-l>", "<C-w>l", "Navigate to split right")
 -- buffer navigation
 map("n", "]b", "<cmd>bnext<CR>", "Go to next buffer")
 map("n", "[b", "<cmd>bprevious<CR>", "Go to previous buffer")
--- map("n", "<leader>x", function()
+-- map("n", "<leader>bx", function()
 --   MiniBufremove.delete(0, false)
 -- end, "Close current buffer") -- sane buffer deletion but relies on mini so don't define here
-map("n", "<leader>b", "<cmd>enew<CR>", "Open new buffer")
+map("n", "<leader>bo", "<cmd>enew<CR>", "Open new buffer")
+map("n", "<leader>bs", "<cmd>source %<CR>", "Source current buffer")
 
 -- tabs
 map("n", "<leader>to", "<cmd>tabnew<CR>", "Open new tab")
@@ -121,3 +122,29 @@ map("n", "<leader>ts", "<cmd>tab split<CR>", "Open new tab by splitting current 
 map("n", "<leader>tx", "<cmd>tabclose<CR>", "Close tab")
 map("n", "]t", "<cmd>tabn<CR>", "Next tab")
 map("n", "[t", "<cmd>tabp<CR>", "Previous tab")
+
+-- utility keymaps
+local function exec_lua(input_code)
+  local chunk, load_err = load(input_code)
+  if chunk then
+    local ok, result = pcall(chunk)
+    if not ok then
+      vim.notify(result or "Runtime error in selected code", vim.log.levels.ERROR)
+    end
+  else
+    vim.notify(load_err or "Error loading selected code", vim.log.levels.ERROR)
+  end
+end
+
+local function exec_current_line()
+  exec_lua(vim.fn.getline("."))
+end
+
+local function exec_current_selection()
+  local start_line, end_line = vim.fn.line("'<"), vim.fn.line("'>")
+  local selected_lines = vim.fn.getline(start_line, end_line) --[[@as string[] ]]
+  exec_lua(table.concat(selected_lines, "\n"))
+end
+
+map("n", "<leader>x", exec_current_line, "Execute current line")
+map("v", "<leader>x", exec_current_selection, "Execute selected lines")
