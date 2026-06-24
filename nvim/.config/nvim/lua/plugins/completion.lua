@@ -6,7 +6,7 @@ vim.pack.add({
 require("blink.cmp").setup({
   keymap = { preset = "default" },
   sources = {
-    default = { "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "path", "snippets" },
   },
   snippets = { preset = "default" },
   fuzzy = {
