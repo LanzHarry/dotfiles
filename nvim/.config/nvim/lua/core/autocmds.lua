@@ -2,7 +2,7 @@
 
 -- local helper definitions
 local augroup = vim.api.nvim_create_augroup
-local default_group = augroup("BaseAutoCommands", { clear = true })
+local default_group = augroup("BaseAutocommands", { clear = true })
 
 local function autocmd(event, opts)
   opts.group = opts.group or default_group
