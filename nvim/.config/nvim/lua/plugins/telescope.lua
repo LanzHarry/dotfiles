@@ -70,6 +70,7 @@ map("n", "<leader>fn", function()
   builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true })
 end, "Find NeoVim config files")
 
+-- lsp and telescope crossover keymaps
 -- telescope has many functions that supersede the built in nvim functions,
 -- for example there are global lsp functions built in to nvim from :h lsp-defaults:
 --
