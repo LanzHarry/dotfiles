@@ -68,7 +68,7 @@ local function set_colourscheme()
     target_theme = "dark"
   end
 
-  if vim.o.background == target_theme then
+  if vim.o.background == target_theme and vim.g.colors_name ~= nil then
     return -- no change necessary
   end
 
