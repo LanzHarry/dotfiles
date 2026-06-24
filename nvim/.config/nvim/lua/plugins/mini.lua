@@ -1,8 +1,16 @@
+-- helper function for keymaps
+local map = require("core.utils").map
+
 vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
 local mini_icons = require("mini.icons")
 mini_icons.setup()
 mini_icons.mock_nvim_web_devicons()
+
+local mini_bufremove = require("mini.bufremove")
+map("n", "<leader>bx", function()
+  mini_bufremove.delete(0, false)
+end, "Close buffer")
 
 -- return {
 --   {
