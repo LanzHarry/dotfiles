@@ -114,7 +114,21 @@ map("n", "[b", "<cmd>bprevious<CR>", "Go to previous buffer")
 --   MiniBufremove.delete(0, false)
 -- end, "Close current buffer") -- sane buffer deletion but relies on mini so don't define here
 map("n", "<leader>bo", "<cmd>enew<CR>", "Open new buffer")
-map("n", "<leader>bs", "<cmd>source %<CR>", "Source current buffer")
+map("n", "<leader>bs", function()
+  local ft = vim.bo.filetype
+  if ft ~= "lua" and ft ~= "vim" then
+    vim.notify("Not a Lua or Vimscript file: " .. ft, vim.log.levels.WARN)
+    return
+  end
+  local ok, err = pcall(function()
+    vim.cmd("source %")
+  end)
+  if ok then
+    vim.notify("Sourced " .. vim.fn.expand("%:t"))
+  else
+    vim.notify(err or "Error sourcing file", vim.log.levels.ERROR)
+  end
+end, "Source current buffer")
 
 -- tabs
 map("n", "<leader>to", "<cmd>tabnew<CR>", "Open new tab")
