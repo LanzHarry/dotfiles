@@ -24,6 +24,7 @@ vim.g.gruvbox_material_foreground = "material" -- material, mix, original, defau
 vim.g.gruvbox_enable_italic = 1 -- enable italic but seems to be for fonts with cursive italics?
 
 -- timer to change colourscheme at desired times
+-- could be extended using sunrise and sunset calculations from equation of lat and long and utc
 local light_start_hour, light_start_min = 7, 30
 local dark_start_hour, dark_start_min = 19, 00
 local time_polling_interval = 1 * 60 * 1000 -- interval in milliseconds
