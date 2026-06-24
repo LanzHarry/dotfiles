@@ -112,3 +112,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     )
   end,
 })
+
+-- TODO:
+-- add git pickers: git_files, git_status, git_branches, git_commits or bcommits
+-- add more lsp pickers: incoming_calls, outgoing_calls, definitions jump type never?
+-- treesitter: list symbols with treesitter?
+-- vimgrep options
+-- fd options

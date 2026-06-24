@@ -82,6 +82,12 @@ end, "Go to next diagnostic message and open floating window")
 map("n", "<leader>do", vim.diagnostic.open_float, "Open diagnostic float for current line")
 map("n", "<leader>dl", vim.diagnostic.setloclist, "Open diagnostics in location list")
 
+-- loclist keymaps
+map("n", "<leader>lo", "<cmd>lopen<CR>", "Open location list")
+map("n", "<leader>lx", "<cmd>lclose<CR>", "Close location list")
+map("n", "]l", "<cmd>lnext<CR>", "Next loclist entry")
+map("n", "[l", "<cmd>lprev<CR>", "Previous loclist entry")
+
 -- quickfix keymaps
 map("n", "<leader>co", "<cmd>copen<CR>", "Open quickfix list")
 map("n", "<leader>cx", "<cmd>cclose<CR>", "Close quickfix list")
