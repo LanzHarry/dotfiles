@@ -20,7 +20,44 @@ local ignore_dirs = {
   "build",
 }
 
+local ignore_files = {}
+
+local function fd_excludes(dirs, files)
+  local args = {}
+  for _, pattern in ipairs(vim.iter({ dirs, files }):flatten():totable()) do
+    table.insert(args, "--exclude")
+    table.insert(args, pattern)
+  end
+  return args
+end
+
+local function rg_excludes(dirs, files)
+  local args = {}
+  for _, pattern in ipairs(vim.iter({ dirs, files }):flatten():totable()) do
+    table.insert(args, "--glob")
+    table.insert(args, "!" .. pattern)
+  end
+  return args
+end
+
 require("telescope").setup({
+  defaults = {
+    vimgrep_arguments = vim
+      .iter({
+        {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+        },
+        rg_excludes(ignore_dirs, ignore_files),
+      })
+      :flatten()
+      :totable(),
+  },
   extensions = {
     ["ui-select"] = { require("telescope.themes").get_dropdown({}) },
     fzf = {
@@ -32,7 +69,13 @@ require("telescope").setup({
   },
   pickers = {
     find_files = {
-      hidden = true,
+      find_command = vim
+        .iter({
+          { "fd", "--type", "f", "--hidden" },
+          fd_excludes(ignore_dirs, ignore_files),
+        })
+        :flatten()
+        :totable(),
     },
   },
 })
