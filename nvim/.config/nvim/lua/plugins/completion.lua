@@ -4,7 +4,11 @@ vim.pack.add({
 })
 
 require("blink.cmp").setup({
-  keymap = { preset = "default" },
+  keymap = {
+    preset = "default",
+    ["<C-space>"] = false,
+    ["<C-d>"] = { "show", "show_documentation", "hide_documentation" },
+  },
   sources = {
     default = { "lsp", "path", "snippets" },
   },
