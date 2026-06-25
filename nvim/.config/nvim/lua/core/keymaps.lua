@@ -91,8 +91,8 @@ map("n", "[l", "<cmd>lprev<CR>", "Previous loclist entry")
 -- quickfix keymaps
 map("n", "<leader>co", "<cmd>copen<CR>", "Open quickfix list")
 map("n", "<leader>cx", "<cmd>cclose<CR>", "Close quickfix list")
-map("n", "]q", "<cmd>cnext<CR>", "Next quickfix entry")
-map("n", "[q", "<cmd>cprev<CR>", "Previous quickfix entry")
+map("n", "]c", "<cmd>cnext<CR>", "Next quickfix entry")
+map("n", "[c", "<cmd>cprev<CR>", "Previous quickfix entry")
 
 -- resize splits with arrows
 map("n", "<Up>", "<cmd>resize -2<CR>", "Decrease split height")
