@@ -45,10 +45,18 @@ local function treesitter_try_attach(buf, language)
 end
 
 local available_parsers = require("nvim-treesitter").get_available()
+
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("TreeSitterAttachGroup", { clear = true }),
   callback = function(ev)
     local buf, filetype = ev.buf, ev.match
+
+    -- don't run treesitter for very large files
+    local max_file_size = 200 * 1024 -- 200 KB
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+    if ok and stats and stats.size > max_file_size then
+      return
+    end
 
     local language = vim.treesitter.language.get_lang(filetype)
     if not language then
