@@ -161,14 +161,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map(
       "n",
       "gW",
-      builtin.lsp_dynamic_workspace_symbols,
+      builtin.lsp_dynamic_workspace_symbols, -- dynamic re-queries on each keystroke; switch to lsp_workspace_symbols if this feels slow on huge repos
       "Open workspace symbols",
       { buffer = buf }
     )
+    map("n", "gic", builtin.lsp_incoming_calls, "Go to incoming calls", { buffer = buf })
+    map("n", "goc", builtin.lsp_outgoing_calls, "Go to outgoing calls", { buffer = buf })
   end,
 })
 
 -- TODO:
--- add git pickers: git_branches, git_commits
--- add more lsp pickers: incoming_calls, outgoing_calls, definitions jump type never?
--- treesitter: list symbols with treesitter?
+-- treesitter: list symbols with treesitter? This has some overlap with lsp document symbols but its output is less rich
+-- add telescope frecency for file ranking?
+-- more advanced grep features (multigrep with globbing like in tj video, or working directory restrictions)
