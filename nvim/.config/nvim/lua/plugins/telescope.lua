@@ -93,6 +93,7 @@ end
 -- custom telescope picker keymaps
 local builtin = require("telescope.builtin")
 
+-- f namespace for "find" like workflows
 map("n", "<leader>fh", builtin.help_tags, "Find help tags")
 map("n", "<leader>fk", builtin.keymaps, "Find keymaps")
 map("n", "<leader>ff", builtin.find_files, "Find files")
@@ -103,8 +104,19 @@ map("n", "<leader>fd", builtin.diagnostics, "Find diagnostics")
 map("n", "<leader>fr", builtin.resume, "Resume find")
 map("n", "<leader>f.", builtin.oldfiles, "Find recent files")
 map("n", "<leader>fc", builtin.commands, "Find commands")
+
+-- buffer workflows
 map("n", "<leader><leader>", builtin.buffers, "Find open buffers")
 map("n", "<leader>/", builtin.current_buffer_fuzzy_find, "Find in current buffer")
+
+-- g namespace for git workflows
+map("n", "<leader>gf", function()
+  builtin.git_files({ show_untracked = true })
+end, "Find files tracked by git")
+map("n", "<leader>gs", builtin.git_status, "Find git statuses")
+map("n", "<leader>gb", builtin.git_bcommits, "Find git commits for buffer")
+-- other git / telescope commands: stash, commits, bcommits_range, branches
+-- although these might be better served with neogit or fugitive for example
 
 -- grep in open files only
 map("n", "<leader>s/", function()
@@ -157,6 +169,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- TODO:
--- add git pickers: git_files, git_status, git_branches, git_commits or bcommits
+-- add git pickers: git_branches, git_commits
 -- add more lsp pickers: incoming_calls, outgoing_calls, definitions jump type never?
 -- treesitter: list symbols with treesitter?
