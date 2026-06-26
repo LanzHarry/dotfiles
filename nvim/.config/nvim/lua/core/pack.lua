@@ -2,6 +2,7 @@
 require("core.pack_changed")
 
 -- plugins that other plugins depend on
+require("plugins.git_plugins")
 require("plugins.mini")
 
 -- other plugins do not need synchronous requirements
