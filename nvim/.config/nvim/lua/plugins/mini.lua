@@ -17,6 +17,8 @@ mini_statusline.setup({
   use_icons = true,
 })
 
+-- todo: add ai, pairs, and surround
+
 -- return {
 --   {
 --     "nvim-mini/mini.nvim",
