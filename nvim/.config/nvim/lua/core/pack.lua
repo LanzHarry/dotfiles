@@ -2,8 +2,8 @@
 require("core.pack_changed")
 
 -- plugins that other plugins depend on
-require("plugins.git_plugins")
-require("plugins.mini")
+require("plugins.git_plugins") -- first to give git deps to mini plugins like statusline
+require("plugins.mini") -- second to give icons (mock web devicons) to plugins like telescope
 
 -- other plugins do not need synchronous requirements
 require("plugins.colourscheme")
