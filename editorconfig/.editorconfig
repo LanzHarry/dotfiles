@@ -20,6 +20,11 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
 
+# settings for python files only
+[*.py]
+indent_style = space
+indent_size = 4
+
 # settings for markdown files only
 [*.md]
 trim_trailing_whitespace = false
