@@ -12,6 +12,11 @@ map("n", "<leader>bx", function()
   mini_bufremove.delete(0, false)
 end, "Close buffer")
 
+local mini_statusline = require("mini.statusline")
+mini_statusline.setup({
+  use_icons = true,
+})
+
 -- return {
 --   {
 --     "nvim-mini/mini.nvim",
