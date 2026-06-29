@@ -1,5 +1,6 @@
--- todo add indent blank line, and colouriser of some kind
+vim.pack.add({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
 
+require("ibl").setup()
 -- return {
 --   -- autopairs for ({[]}) convenience
 --   {
