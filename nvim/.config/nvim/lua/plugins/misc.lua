@@ -1,46 +1,11 @@
 vim.pack.add({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
 
-require("ibl").setup()
--- return {
---   -- autopairs for ({[]}) convenience
---   {
---     "windwp/nvim-autopairs",
---     event = "InsertEnter",
---     config = true,
---     opts = {
---       check_ts = true,
---       fast_wrap = {},
---     },
---   },
---   -- which key for showing keymaps when forgotten
---   {
---     "folke/which-key.nvim",
---     event = "VeryLazy",
---     opts = {
---       delay = 500,
---     },
---     keys = {
---       {
---         "<leader>?",
---         function()
---           require("which-key").show({ global = false })
---         end,
---         desc = "Buffer Local Keymaps (which-key)",
---       },
---     },
---   },
---   -- comment for easy commenting and uncommenting
---   {
---     "numToStr/Comment.nvim",
---     event = "VeryLazy",
---     opts = {
---       -- add any options here
---     },
---   },
---   -- color visualisation in editor
---   {
---     "catgoose/nvim-colorizer.lua",
---     event = "BufReadPre",
---     opts = {},
---   },
--- }
+require("ibl").setup({
+  indent = { char = "▏" },
+})
+
+-- other misc plugins to consider:
+-- Colourising plugins:
+-- - mini: https://github.com/nvim-mini/mini.hipatterns
+-- - colorizer: https://github.com/catgoose/nvim-colorizer.lua
+-- - Native lsp colourisation
