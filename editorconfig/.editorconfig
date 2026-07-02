@@ -3,6 +3,7 @@
 # This will affect live editing behaviour as this file is read on buffer enter for matching file types
 # Some save-time behaviour is also configured here such as trimming of whitespace and final newlines
 # Other sources of formatting include config files for formatters, options.lua, and after/ftplugins files
+# This file is intentionally kept minimal for my personal projects where the nvim specific options.lua, after/ftplugin, and my own formatter configs are set to my workflows already
 
 # settings root = true here stops editorconfig from searching any higher than ~
 # if a local .editorconfig file is made for a project root = true will prevent searching higher than that project root
@@ -10,11 +11,7 @@ root = true
 
 # settings for all files
 [*]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
 trim_trailing_whitespace = true
-indent_style = space
 
 # settings for markdown files only
 [*.md]

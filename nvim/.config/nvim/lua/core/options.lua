@@ -69,6 +69,8 @@ vim.opt.undofile = true -- save undo history
 vim.opt.undolevels = 2000 -- max undo steps
 vim.opt.undoreload = 10000 -- lines to save for reload
 vim.opt.fileencoding = "utf-8" -- default file encoding
+vim.opt.fileformat = "unix" -- default file format, end lines with lf
+vim.opt.fixendofline = true -- add newline char to end of file
 vim.opt.updatetime = 250 -- wait time for neovim to fire certain events
 vim.opt.timeoutlen = 300 -- wait time to complete mapped sequence
 vim.opt.iskeyword:append("-") -- treat hyphenated words as one word
