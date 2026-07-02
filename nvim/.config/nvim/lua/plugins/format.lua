@@ -9,6 +9,13 @@ require("conform").setup({
     python = { "ruff_format" },
     markdown = { "rumdl" },
   },
+  formatters = {
+    rumdl = {
+      command = "rumdl",
+      args = { "fmt", "--silent", "-" },
+      cwd = require("conform.util").root_file({ ".rumdl.toml", "rumdl.toml", ".git" }),
+    },
+  },
 })
 
 vim.api.nvim_create_user_command("FormatToggle", function()
