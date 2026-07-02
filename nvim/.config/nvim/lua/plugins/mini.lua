@@ -18,6 +18,14 @@ mini_statusline.setup({
   use_icons = true,
 })
 
+mini_statusline.section_filename = function()
+  local filename = vim.fn.expand("%:t")
+  if filename == "" then
+    return "[No Name]"
+  end
+  return filename
+end
+
 local mini_ai = require("mini.ai")
 mini_ai.setup()
 
@@ -26,21 +34,3 @@ mini_pairs.setup()
 
 local mini_surround = require("mini.surround")
 mini_surround.setup()
-
--- todo: add ai, pairs, and surround
-
--- return {
---   {
---     "nvim-mini/mini.nvim",
---     version = false,
---     lazy = false,
---     priority = 900,
---     config = function()
---       require("mini.ai").setup() -- extend and enhance text object motions
---       require("mini.bufremove").setup() -- sane buffer deletion
---       require("mini.icons").setup() -- icon provider
---       require("mini.statusline").setup({ use_icons = true }) -- simple status line
---       require("mini.surround").setup() -- surround actions
---     end,
---   },
--- }
