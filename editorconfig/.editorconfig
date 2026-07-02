@@ -14,16 +14,7 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-# settings for lua files only
-[*.lua]
 indent_style = space
-indent_size = 2
-
-# settings for python files only
-[*.py]
-indent_style = space
-indent_size = 4
 
 # settings for markdown files only
 [*.md]

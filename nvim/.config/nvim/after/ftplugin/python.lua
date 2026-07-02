@@ -1,7 +1,3 @@
 -- settings for python files
-local set = vim.opt_local
-
-set.shiftwidth = 4
-set.tabstop = 4
-set.softtabstop = 4
-set.expandtab = true
+-- indents and shiftwidths and spaces over tabs matches defaults
+-- in options already
