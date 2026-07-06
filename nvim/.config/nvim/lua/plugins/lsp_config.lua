@@ -1,6 +1,7 @@
-vim.lsp.enable("lua_ls")
 vim.lsp.enable("basedpyright")
+vim.lsp.enable("lua_ls")
 vim.lsp.enable("rumdl")
+vim.lsp.enable("vtsls")
 
 -- autocommands for lsp related features
 local augroup = vim.api.nvim_create_augroup
