@@ -12,7 +12,7 @@ alias la='eza --icons=auto --all'
 alias lg='eza --icons=auto --long --git'
 alias lag='eza --icons=auto --long --all --git'
 alias lt="eza --icons=auto --tree --git-ignore --ignore-glob=\"${eza_all_ignore_list}\""
-alias lat="eza --icons=auto --tree --all --git-ignore --ignore-glob=\"${eza_all_ignore_list}\""
+alias lat="eza --icons=auto --tree --all --ignore-glob=\"${eza_all_ignore_list}\""
 alias ..='cd ..'
 alias ...='cd ../..'
 
