@@ -1,3 +1,12 @@
+-- strip any formatting capabilities from language servers
+vim.lsp.config("*", {
+  on_init = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
+})
+
+-- enable each lsp explicitly
 vim.lsp.enable("basedpyright")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("ruff")

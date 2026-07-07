@@ -5,8 +5,4 @@ return {
     { "package-lock.json", "yarn.lock", "pnpm-lock.yaml" },
     ".git",
   },
-  capabilities = {
-    documentFormattingProvider = false,
-    documentRangeFormattingProvider = false,
-  },
 }

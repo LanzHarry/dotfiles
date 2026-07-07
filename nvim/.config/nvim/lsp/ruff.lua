@@ -14,4 +14,7 @@ return {
     },
     ".git",
   },
+  capabilities = {
+    general = { positionEncodings = { "utf-16" } },
+  },
 }

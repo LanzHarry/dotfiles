@@ -21,7 +21,6 @@ return {
     },
   },
   capabilities = {
-    documentFormattingProvider = false,
-    documentRangeFormattingProvider = false,
+    general = { positionEncodings = { "utf-16" } },
   },
 }

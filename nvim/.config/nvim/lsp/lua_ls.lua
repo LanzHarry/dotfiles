@@ -9,11 +9,4 @@ return {
   -- files that share a root directory will share a connection to the LSP server
   -- nested tables indicate equal priority
   root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
-
-  -- disable formatting capabilities of language server in favour of actual
-  -- formatter such as stylua
-  capabilities = {
-    documentFormattingProvider = false,
-    documentRangeFormattingProvider = false,
-  },
 }
