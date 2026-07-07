@@ -3,7 +3,7 @@ vim.pack.add({ "https://github.com/mfussenegger/nvim-lint" })
 local lint = require("lint")
 
 lint.linters_by_ft = {
-  python = { "ruff" },
+  -- python = { "ruff" }, -- running as LSP now instead
 }
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
