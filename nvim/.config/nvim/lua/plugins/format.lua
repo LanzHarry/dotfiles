@@ -3,17 +3,25 @@ local map = require("core.utils").map
 
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
+-- helper functions specific to conform
+local util = require("conform.util")
+
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
     python = { "ruff_format" },
     markdown = { "rumdl" },
+    javascript = { "biome" },
+    javascriptreact = { "biome" },
+    typescript = { "biome" },
+    typescriptreact = { "biome" },
+    css = { "biome" },
   },
   formatters = {
     rumdl = {
       command = "rumdl",
       args = { "fmt", "--silent", "-" },
-      cwd = require("conform.util").root_file({ ".rumdl.toml", "rumdl.toml", ".git" }),
+      cwd = util.root_file({ ".rumdl.toml", "rumdl.toml", ".git" }),
     },
   },
 })
