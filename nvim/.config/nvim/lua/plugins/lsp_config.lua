@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
+
 -- strip any formatting capabilities from language servers
 vim.lsp.config("*", {
   on_init = function(client)
