@@ -16,6 +16,7 @@ Thumbs.db
 # tools
 .direnv/
 .claude/settings.local.json
+.rumdl_cache/
 
 # misc
 *.tmp
