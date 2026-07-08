@@ -23,6 +23,9 @@ setopt HIST_VERIFY
 setopt AUTO_CD
 setopt NO_CASE_GLOB
 
+# --- mise-en-place activate ---
+eval "$(~/.local/bin/mise activate zsh)"
+
 # --- Completion ---
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}'
