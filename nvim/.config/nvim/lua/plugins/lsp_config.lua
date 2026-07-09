@@ -1,10 +1,20 @@
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 
 -- strip any formatting capabilities from language servers
+local function disable_formatting(client)
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+  client.server_capabilities.documentOnTypeFormattingProvider = false
+end
+
 vim.lsp.config("*", {
+  on_init = disable_formatting,
+})
+
+vim.lsp.config("biome", {
   on_init = function(client)
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
+    disable_formatting(client)
+    client.server_capabilities.definitionProvider = false
   end,
 })
 
