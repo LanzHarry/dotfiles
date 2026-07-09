@@ -59,7 +59,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       -- to show more or less detail such as types etc.
       vim.lsp.inlay_hint.enable(false, { bufnr = ev.buf })
       map("n", "<leader>th", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
+        vim.lsp.inlay_hint.enable(
+          not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }),
+          { bufnr = ev.buf }
+        )
       end, "Toggle inlay hints", { buffer = ev.buf })
     end
   end,
