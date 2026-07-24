@@ -10,7 +10,7 @@ vim.g.loaded_ruby_provider = 0
 -- visual options
 vim.opt.number = true -- make line numbers visible
 vim.opt.relativenumber = true -- set line numbers to be relative to current line
-vim.opt.colorcolumn = "80,100" -- column to show where 80 character limit is
+vim.opt.colorcolumn = "81,101" -- column to show where 80 character limit is
 vim.opt.cursorline = true -- highlight line the cursor is on
 vim.opt.guicursor =
   "n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
