@@ -1,3 +1,6 @@
+-- load map helper function
+local map = require("core.utils").map
+
 -- disable legacy providers (for clean checkhealth)
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -9,6 +12,8 @@ vim.opt.number = true -- make line numbers visible
 vim.opt.relativenumber = true -- set line numbers to be relative to current line
 vim.opt.colorcolumn = "80,100" -- column to show where 80 character limit is
 vim.opt.cursorline = true -- highlight line the cursor is on
+vim.opt.guicursor =
+  "n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
 vim.opt.hlsearch = true -- true: show all search results from highlights (clear with keymap? or set to false to only show one at a time)
 vim.opt.showmode = false -- show what interaction mode vim is in (set to false if statusline plugin installed)
 vim.opt.ruler = false -- disable line and col number as statusline will show this
@@ -80,16 +85,16 @@ vim.opt.smoothscroll = true -- smooth scrolling if version supports it
 vim.opt.modeline = false -- disable modeline for no arbitrary code exec
 
 -- diagnostic settings
+local virtual_text_enabled = false
+local virtual_text_config = { spacing = 4, source = "if_many" }
+
 vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
   float = { source = true },
   underline = { severity = { min = vim.diagnostic.severity.WARN } },
-  virtual_text = false,
-  virtual_lines = {
-    current_line = true,
-    -- min = vim.diagnostic.severity.WARN,
-  },
+  virtual_text = virtual_text_enabled,
+  virtual_lines = false,
   signs = true,
   jump = {
     on_jump = function(_, bufnr)
@@ -101,6 +106,11 @@ vim.diagnostic.config({
     end,
   },
 })
+
+map("n", "<leader>dt", function()
+  virtual_text_enabled = not virtual_text_enabled
+  vim.diagnostic.config({ virtual_text = virtual_text_enabled and virtual_text_config or false })
+end, "Toggle diagnostics")
 
 vim.api.nvim_set_hl(0, "DiagnosticDeprecated", {
   underline = true,
